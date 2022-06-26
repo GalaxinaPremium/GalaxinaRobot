@@ -68,11 +68,6 @@ RUN pip3 install --upgrade pip setuptools
 RUN git clone -b galaxina https://github.com/GalaxinaPremium/GalaxinaRobot /root/Galaxina_Bot
 WORKDIR /root/Galaxina_Bot
 
-#Copy config file to /root/Galaxina_Bot/Galaxina_Bot
-COPY ./Galaxina_Bot/sample_config.py ./Galaxina_Bot/config.py* /root/Galaxina_Bot/Galaxina_Bot/
-
-ENV PATH="/home/bot/bin:$PATH"
-
 # Install requirements
 RUN pip3 install -U -r Installer
 
