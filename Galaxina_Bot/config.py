@@ -29,6 +29,7 @@ class Config(object):
 
     # RECOMMENDED
     SQLALCHEMY_DATABASE_URI = "postgres://bxwkmxni:EOlujTSV-GNDHSK8PMTkjL21Yx-IXgh7@kesavan.db.elephantsql.com/bxwkmxni"  # needed for any database modules
+    MONGO_DB_URI = ""
     LOAD = []
     NO_LOAD = ["rss", "cleaner", "connection", "math"]
     WEBHOOK = False
