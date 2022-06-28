@@ -3,6 +3,11 @@ import json
 import os
 
 
+def get_user_list(config, key):
+    with open("{}/FallenRobot/{}".format(os.getcwd(), config), "r") as json_file:
+        return json.load(json_file)[key]
+
+
 # Create a new config.py or rename this to config.py file in same dir and import, then extend this class.
 class Config(object):
     LOGGER = True
@@ -30,18 +35,18 @@ class Config(object):
     INFOPIC = True
     URL = None
     SPAMWATCH_API = "z5w0J5UfQU_g9y4_o0Z5YjbF2bZ4ltekVSihsB4DS9MJNPtt7ztyWMJkw_TPPdLo"  # go to support.spamwat.ch to get key
-    SPAMWATCH_SUPPORT_CHAT = "@SpamWatchSupport"
+    SPAMWATCH_SUPPORT_CHAT = "@adityadiscus"
 
     # OPTIONAL
     ##List of id's -  (not usernames) for users which have sudo access to the bot.
-    DRAGONS = 5336023580
+    DRAGONS = get_user_list("elevated_users.json", "sudos")
     ##List of id's - (not usernames) for developers who will have the same perms as the owner
-    DEV_USERS = None
+    DEV_USERS = get_user_list("elevated_users.json", "devs")
     ##List of id's (not usernames) for users which are allowed to gban, but can also be banned.
-    DEMONS = None
+    DEMONS = get_user_list("elevated_users.json", "supports")
     # List of id's (not usernames) for users which WONT be banned/kicked by the bot.
-    TIGERS = None
-    WOLVES = None
+    TIGERS = get_user_list("elevated_users.json", "tigers")
+    WOLVES = get_user_list("elevated_users.json", "whitelists")
     DONATION_LINK = None  # EG, paypal
     CERT_PATH = None
     PORT = 5000
