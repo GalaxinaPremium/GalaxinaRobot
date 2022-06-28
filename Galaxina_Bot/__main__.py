@@ -87,8 +87,8 @@ buttons = [
         ),
     ],
     [
-        InlineKeyboardButton(text="💞 ᴀʙᴏᴜᴛ ᴍᴇ​​ 💞", callback_data="galaxina_"),
-        InlineKeyboardButton(text="📝 sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ 📝", callback_data="source_"),
+        InlineKeyboardButton(text="💞 ᴀʙᴏᴜᴛ ᴍᴇ​​", callback_data="galaxina_"),
+        InlineKeyboardButton(text="sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ 📝", callback_data="source_"),
     ],
     [
         InlineKeyboardButton(text="⚙️ ʙᴏᴛ ᴄᴏᴍᴍᴀɴᴅs 🛠️", callback_data="help_back"),
