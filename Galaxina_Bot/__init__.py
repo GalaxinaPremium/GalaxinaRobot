@@ -27,13 +27,13 @@ if sys.version_info[0] < 3 or sys.version_info[1] < 6:
     )
     quit(1)
 
-ENV = bool(os.environ.get("ENV", False))
+ENV = bool(os.environ.get("ENV", True))
 
 if ENV:
-    TOKEN = os.environ.get("TOKEN", None)
+    TOKEN = os.environ.get("TOKEN", "2062211332:AAHvwYpVZZxOtgldZS-CWe0yA7Tf95LEkzg")
 
     try:
-        OWNER_ID = int(os.environ.get("OWNER_ID", None))
+        OWNER_ID = int(os.environ.get("OWNER_ID", 1282754256))
     except ValueError:
         raise Exception("Your OWNER_ID env variable is not a valid integer.")
 
@@ -68,10 +68,10 @@ if ENV:
     URL = os.environ.get("URL", "")  # Does not contain token
     PORT = int(os.environ.get("PORT", 5000))
     CERT_PATH = os.environ.get("CERT_PATH")
-    API_ID = os.environ.get("API_ID", None)
-    API_HASH = os.environ.get("API_HASH", None)
+    API_ID = os.environ.get("API_ID", 11074927)
+    API_HASH = os.environ.get("API_HASH", "9e7366e2f9faa01ae581f80adc429065")
 
-    DB_URI = os.environ.get("DATABASE_URL")
+    DB_URI = os.environ.get("DATABASE_URL", "postgres://bxwkmxni:EOlujTSV-GNDHSK8PMTkjL21Yx-IXgh7@kesavan.db.elephantsql.com/bxwkmxni")
     MONGO_DB_URI = os.environ.get("MONGO_DB_URI", None)
     DONATION_LINK = os.environ.get("DONATION_LINK")
     HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
@@ -87,8 +87,8 @@ if ENV:
     WORKERS = int(os.environ.get("WORKERS", 8))
     BAN_STICKER = os.environ.get("BAN_STICKER", "CAADAgADOwADPPEcAXkko5EB3YGYAg")
     ALLOW_EXCL = os.environ.get("ALLOW_EXCL", False)
-    CASH_API_KEY = os.environ.get("CASH_API_KEY", None)
-    TIME_API_KEY = os.environ.get("TIME_API_KEY", None)
+    CASH_API_KEY = os.environ.get("CASH_API_KEY", "D60NS2STEZQJR9KX")
+    TIME_API_KEY = os.environ.get("TIME_API_KEY", "XYRWERF4VR6I")
     WALL_API = os.environ.get("WALL_API", None)
     SUPPORT_CHAT = os.environ.get("SUPPORT_CHAT", None)
     ARQ_API_URL = os.environ.get("ARQ_API_URL", "https://arq.hamker.in")
