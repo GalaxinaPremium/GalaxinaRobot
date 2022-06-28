@@ -64,6 +64,7 @@ class Config(object):
     WALL_API = (
         "https://wall.alphacoders.com/api2.0/get.php?method=wallpaper_info&id=865098"  # For wallpapers, get one from https://wall.alphacoders.com/api.php
     )
+    ALLOW_CHATS = None
     BL_CHATS = []  # List of groups that you want blacklisted.
     SPAMMERS = None
 
